@@ -2,24 +2,27 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: ecommerce
 resources:
-  - ../../base
+- ../../base
 images:
-  - name: ghcr.io/your-org/ecommerce-platform/auth-service
-    newTag: dev
-  - name: ghcr.io/your-org/ecommerce-platform/product-service
-    newTag: dev
-  - name: ghcr.io/your-org/ecommerce-platform/cart-service
-    newTag: dev
-  - name: ghcr.io/your-org/ecommerce-platform/order-service
-    newTag: dev
-  - name: ghcr.io/your-org/ecommerce-platform/notification-service
-    newTag: dev
-  - name: ghcr.io/your-org/ecommerce-platform/api-gateway
-    newTag: dev
+- name: ghcr.io/akshayshetty7709-tech/e-commerce-project/cart-service
+  newName: ghcr.io/akshayshetty7709-tech/e-commerce-project/cart-service
+  newTag: 82c9b80f4d17fe67228a0a081d504dda38c2c0c5
+- name: ghcr.io/your-org/ecommerce-platform/api-gateway
+  newTag: dev
+- name: ghcr.io/your-org/ecommerce-platform/auth-service
+  newTag: dev
+- name: ghcr.io/your-org/ecommerce-platform/cart-service
+  newTag: dev
+- name: ghcr.io/your-org/ecommerce-platform/notification-service
+  newTag: dev
+- name: ghcr.io/your-org/ecommerce-platform/order-service
+  newTag: dev
+- name: ghcr.io/your-org/ecommerce-platform/product-service
+  newTag: dev
 patches:
-  - target:
-      kind: Deployment
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+  target:
+    kind: Deployment
