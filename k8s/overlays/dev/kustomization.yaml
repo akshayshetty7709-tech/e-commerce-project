@@ -4,7 +4,6 @@ namespace: ecommerce
 resources:
 - ../../base
 images:
-<<<<<<< HEAD
   - name: docker.io/akshaykumarshetty/auth-service
     newTag: dev
   - name: docker.io/akshaykumarshetty/product-service
@@ -17,23 +16,6 @@ images:
     newTag: dev
   - name: docker.io/akshaykumarsetty/api-gateway
     newTag: dev
-=======
-- name: ghcr.io/akshayshetty7709-tech/e-commerce-project/cart-service
-  newName: ghcr.io/akshayshetty7709-tech/e-commerce-project/cart-service
-  newTag: 82c9b80f4d17fe67228a0a081d504dda38c2c0c5
-- name: ghcr.io/your-org/ecommerce-platform/api-gateway
-  newTag: dev
-- name: ghcr.io/your-org/ecommerce-platform/auth-service
-  newTag: dev
-- name: ghcr.io/your-org/ecommerce-platform/cart-service
-  newTag: dev
-- name: ghcr.io/your-org/ecommerce-platform/notification-service
-  newTag: dev
-- name: ghcr.io/your-org/ecommerce-platform/order-service
-  newTag: dev
-- name: ghcr.io/your-org/ecommerce-platform/product-service
-  newTag: dev
->>>>>>> 08bf5e2797aebb823e7e480671841af5c3c5285c
 patches:
 - patch: |-
     - op: replace
