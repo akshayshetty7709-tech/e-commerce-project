@@ -1,0 +1,5 @@
+resources:
+  - secret.yaml
+  - pvc.yaml
+  - statefulset.yaml
+  - service.yaml

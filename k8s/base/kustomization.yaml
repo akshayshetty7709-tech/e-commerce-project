@@ -1,0 +1,13 @@
+namespace: ecommerce
+resources:
+  - namespace/namespace.yaml
+  - postgres
+  - mongodb
+  - redis
+  - auth-service
+  - product-service
+  - cart-service
+  - order-service
+  - notification-service
+  - api-gateway
+  - ingress

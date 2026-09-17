@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Realtime notification test</title></head>
+<body>
+  <h3>Open this, click Connect, then place an order with userId=1 via curl</h3>
+  <button onclick="connect()">Connect as user 1</button>
+  <pre id="log"></pre>
+  <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4/dist/socket.io.min.js"></script>
+  <script>
+    function connect() {
+      const socket = io('http://localhost:4005');
+      socket.on('connect', () => {
+        socket.emit('join', '1');
+        document.getElementById('log').textContent += 'connected & joined room user:1\n';
+      });
+      socket.on('notification', (data) => {
+        document.getElementById('log').textContent += JSON.stringify(data, null, 2) + '\n';
+      });
+    }
+  </script>
+</body>
+</html>

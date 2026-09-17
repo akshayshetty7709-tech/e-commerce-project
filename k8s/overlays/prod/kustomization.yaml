@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ecommerce
+resources:
+  - ../../base
+images:
+  - name: ghcr.io/your-org/ecommerce-platform/auth-service
+    newTag: v1.0.0
+  - name: ghcr.io/your-org/ecommerce-platform/product-service
+    newTag: v1.0.0
+  - name: ghcr.io/your-org/ecommerce-platform/cart-service
+    newTag: v1.0.0
+  - name: ghcr.io/your-org/ecommerce-platform/order-service
+    newTag: v1.0.0
+  - name: ghcr.io/your-org/ecommerce-platform/notification-service
+    newTag: v1.0.0
+  - name: ghcr.io/your-org/ecommerce-platform/api-gateway
+    newTag: v1.0.0
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3

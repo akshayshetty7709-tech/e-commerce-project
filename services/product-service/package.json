@@ -1,0 +1,12 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "description": "Product catalog - browsing, search, inventory count",
+  "main": "src/index.js",
+  "scripts": { "start": "node src/index.js", "test": "echo \"no tests yet\" && exit 0" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "prom-client": "^15.1.0"
+  }
+}

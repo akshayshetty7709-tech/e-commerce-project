@@ -1,0 +1,26 @@
+# This is the ONE Application you create manually (or via `argocd app create`).
+# It points at argocd/apps/, and ArgoCD auto-discovers every Application
+# manifest inside that folder - so adding a new microservice later means
+# adding one YAML file here, not touching ArgoCD itself.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ecommerce-app-of-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: ecommerce-platform
+  source:
+    repoURL: https://github.com/your-org/ecommerce-platform.git
+    targetRevision: main
+    path: argocd/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

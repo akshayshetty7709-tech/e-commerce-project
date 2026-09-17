@@ -1,0 +1,12 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "Single entry point; routes /auth, /products, /cart, /orders to backend services",
+  "main": "src/index.js",
+  "scripts": { "start": "node src/index.js", "test": "echo \"no tests yet\" && exit 0" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
+    "prom-client": "^15.1.0"
+  }
+}

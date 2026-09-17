@@ -1,0 +1,15 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "Handles user registration, login, JWT issuance",
+  "main": "src/index.js",
+  "scripts": { "start": "node src/index.js", "test": "echo \"no tests yet\" && exit 0" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.4.5",
+    "prom-client": "^15.1.0"
+  }
+}

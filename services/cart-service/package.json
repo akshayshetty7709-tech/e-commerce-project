@@ -1,0 +1,12 @@
+{
+  "name": "cart-service",
+  "version": "1.0.0",
+  "description": "Shopping cart backed by Redis for low-latency, ephemeral state",
+  "main": "src/index.js",
+  "scripts": { "start": "node src/index.js", "test": "echo \"no tests yet\" && exit 0" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "redis": "^4.6.14",
+    "prom-client": "^15.1.0"
+  }
+}

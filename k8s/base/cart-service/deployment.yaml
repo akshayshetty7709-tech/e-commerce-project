@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-service
+  namespace: ecommerce
+  labels: { app: cart-service }
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: cart-service }
+  template:
+    metadata:
+      labels: { app: cart-service }
+    spec:
+      containers:
+        - name: cart-service
+          image: ghcr.io/your-org/ecommerce-platform/cart-service:latest
+          ports: [{ containerPort: 4003 }]
+          envFrom:
+            - configMapRef: { name: cart-service-config }
+
+          readinessProbe:
+            httpGet: { path: /health, port: 4003 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /health, port: 4003 }
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests: { cpu: 50m, memory: 96Mi }
+            limits: { cpu: 250m, memory: 256Mi }

@@ -1,0 +1,102 @@
+version: "3.9"
+
+# This file reproduces the whole platform on a laptop before anything ever
+# touches Kubernetes. Every service here maps 1:1 to a Deployment in k8s/,
+# and every database here maps 1:1 to the StatefulSets in k8s/base.
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - ./infra/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - postgres-data:/var/lib/postgresql/data
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mongodb:
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db
+    ports: ["27017:27017"]
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes:
+      - redis-data:/data
+
+  auth-service:
+    build: ./services/auth-service
+    environment:
+      DB_HOST: postgres
+      DB_NAME: authdb
+      DB_USER: ${POSTGRES_USER:-postgres}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      JWT_SECRET: ${JWT_SECRET:-dev-secret}
+    depends_on:
+      postgres: { condition: service_healthy }
+    ports: ["4001:4001"]
+
+  product-service:
+    build: ./services/product-service
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/productdb
+    depends_on: [mongodb]
+    ports: ["4002:4002"]
+
+  cart-service:
+    build: ./services/cart-service
+    environment:
+      REDIS_URL: redis://redis:6379
+    depends_on: [redis]
+    ports: ["4003:4003"]
+
+  order-service:
+    build: ./services/order-service
+    environment:
+      DB_HOST: postgres
+      DB_NAME: orderdb
+      DB_USER: ${POSTGRES_USER:-postgres}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      REDIS_URL: redis://redis:6379
+      PRODUCT_SERVICE_URL: http://product-service:4002
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_started }
+      product-service: { condition: service_started }
+    ports: ["4004:4004"]
+
+  notification-service:
+    build: ./services/notification-service
+    environment:
+      REDIS_URL: redis://redis:6379
+    depends_on: [redis]
+    ports: ["4005:4005"]
+
+  api-gateway:
+    build: ./services/api-gateway
+    environment:
+      AUTH_SERVICE_URL: http://auth-service:4001
+      PRODUCT_SERVICE_URL: http://product-service:4002
+      CART_SERVICE_URL: http://cart-service:4003
+      ORDER_SERVICE_URL: http://order-service:4004
+      NOTIFICATION_SERVICE_URL: http://notification-service:4005
+    depends_on:
+      - auth-service
+      - product-service
+      - cart-service
+      - order-service
+      - notification-service
+    ports: ["4000:4000"]
+
+volumes:
+  postgres-data:
+  mongo-data:
+  redis-data:

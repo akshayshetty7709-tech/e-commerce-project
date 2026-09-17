@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-service-config
+  namespace: ecommerce
+data:
+  PORT: "4004"
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  DB_NAME: "orderdb"
+  REDIS_URL: "redis://redis:6379"
+  PRODUCT_SERVICE_URL: "http://product-service:4002"

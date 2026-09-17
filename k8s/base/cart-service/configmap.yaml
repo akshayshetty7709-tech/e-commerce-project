@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cart-service-config
+  namespace: ecommerce
+data:
+  PORT: "4003"
+  REDIS_URL: "redis://redis:6379"
