@@ -38,7 +38,7 @@ jobs:
             cart-service: 'services/cart-service/**'
             order-service: 'services/order-service/**'
             notification-service: 'services/notification-service/**'
-            api-gateway: 'services/api-gateway/**'
+            api-gateway: 'services/api-gatewa/**'
 
   build-and-push:
     needs: detect-changes
