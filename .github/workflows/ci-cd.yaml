@@ -1,4 +1,4 @@
-name: CI - Build, Test, Push Images
+name: CI - Build, Test, Push Images to dockerhub
 
 # Real-company flow: CI (this file) only builds/tests/pushes images and bumps
 # the image tag in Git. It NEVER runs `kubectl apply` or touches the cluster.
