@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: product-service
-          image: ghcr.io/your-org/ecommerce-platform/product-service:latest
+          image: docker.io/your-dockerhub-username/product-service:latest
           ports: [{ containerPort: 4002 }]
           envFrom:
             - configMapRef: { name: product-service-config }

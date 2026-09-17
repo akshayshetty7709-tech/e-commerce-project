@@ -224,8 +224,50 @@ argocd version --client
 ```
 
 You'll also need an AWS account with permission to create an EKS cluster,
-and a container registry to push images to (examples below use GitHub
-Container Registry, `ghcr.io` — swap for ECR if you prefer).
+and a **Docker Hub** account to push images to (this project's
+`ci-cd.yaml` and `k8s/` manifests are already wired to `docker.io`).
+
+Before running CI, set these in your GitHub repo under **Settings → Secrets
+and variables → Actions**:
+
+| Name | Type | Value |
+|---|---|---|
+| `DOCKERHUB_USERNAME` | Variable | your Docker Hub username |
+| `DOCKERHUB_TOKEN` | Secret | a Docker Hub **Access Token** (Docker Hub → Account Settings → Security → New Access Token) — never your account password |
+
+Also replace `your-dockerhub-username` with your real Docker Hub username in:
+- every `image:` line under `k8s/base/*/deployment.yaml`
+- every `newTag`/`name:` image entry in `k8s/overlays/dev/kustomization.yaml` and `k8s/overlays/prod/kustomization.yaml`
+
+```bash
+# quick way to do the replacement across the repo
+find k8s -name "*.yaml" -exec sed -i 's/your-dockerhub-username/<your-real-username>/g' {} +
+```
+
+If your Docker Hub repositories are **private** (recommended — don't publish
+a company's images publicly), also create an `imagePullSecret` so EKS nodes
+can pull them, and reference it in each Deployment:
+
+```bash
+kubectl -n ecommerce create secret docker-registry dockerhub-creds \
+  --docker-server=https://index.docker.io/v1/ \
+  --docker-username=<your-dockerhub-username> \
+  --docker-password=<your-access-token>
+```
+
+then add under each Deployment's `spec.template.spec`:
+```yaml
+imagePullSecrets:
+  - name: dockerhub-creds
+```
+
+> **Note on Docker Hub rate limits:** anonymous and free-tier pulls are
+> rate-limited (100 pulls/6h for anonymous, more for authenticated free
+> accounts). The `imagePullSecret` above also fixes this, since authenticated
+> pulls get a higher limit than anonymous ones. On a busy cluster doing lots
+> of rolling deploys, this is one of the practical reasons companies use ECR
+> instead once they're fully on AWS — worth knowing even though this project
+> uses Docker Hub.
 
 ### 7.2 Create the EKS cluster
 

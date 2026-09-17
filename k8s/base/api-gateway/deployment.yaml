@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: ghcr.io/your-org/ecommerce-platform/api-gateway:latest
+          image: docker.io/your-dockerhub-username/api-gateway:latest
           ports: [{ containerPort: 4000 }]
           envFrom:
             - configMapRef: { name: api-gateway-config }

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: ghcr.io/your-org/ecommerce-platform/order-service:latest
+          image: docker.io/your-dockerhub-username/order-service:latest
           ports: [{ containerPort: 4004 }]
           envFrom:
             - configMapRef: { name: order-service-config }

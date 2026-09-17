@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: ghcr.io/your-org/ecommerce-platform/notification-service:latest
+          image: docker.io/your-dockerhub-username/notification-service:latest
           ports: [{ containerPort: 4005 }]
           envFrom:
             - configMapRef: { name: notification-service-config }

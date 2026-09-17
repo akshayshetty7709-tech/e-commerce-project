@@ -4,17 +4,17 @@ namespace: ecommerce
 resources:
   - ../../base
 images:
-  - name: ghcr.io/your-org/ecommerce-platform/auth-service
+  - name: docker.io/your-dockerhub-username/auth-service
     newTag: v1.0.0
-  - name: ghcr.io/your-org/ecommerce-platform/product-service
+  - name: docker.io/your-dockerhub-username/product-service
     newTag: v1.0.0
-  - name: ghcr.io/your-org/ecommerce-platform/cart-service
+  - name: docker.io/your-dockerhub-username/cart-service
     newTag: v1.0.0
-  - name: ghcr.io/your-org/ecommerce-platform/order-service
+  - name: docker.io/your-dockerhub-username/order-service
     newTag: v1.0.0
-  - name: ghcr.io/your-org/ecommerce-platform/notification-service
+  - name: docker.io/your-dockerhub-username/notification-service
     newTag: v1.0.0
-  - name: ghcr.io/your-org/ecommerce-platform/api-gateway
+  - name: docker.io/your-dockerhub-username/api-gateway
     newTag: v1.0.0
 patches:
   - target:
