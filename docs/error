@@ -1,4 +1,5 @@
-ARNING: A restricted method in java.lang.System has been called
+Try `flutter pub outdated` for more information.
+WARNING: A restricted method in java.lang.System has been called
 WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/kiaq-lap-130/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
 WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
 WARNING: Restricted methods will be blocked in a future release unless native access is enabled
@@ -11,43 +12,24 @@ If no such version exists, report the issue to the plugin. If necessary, here is
 an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
 
 If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
-The message received from the daemon indicates that the daemon has disappeared.
-Build request sent: Build{id=6a552b93-f1db-4f69-9f61-e1f83d6e6549, currentDir=/home/kiaq-lap-130/Mobile_App/android}
-Attempting to read last messages from the daemon log...
-Daemon pid: 16471
-  log file: /home/kiaq-lap-130/.gradle/daemon/9.3.1/daemon-16471.out.log
------ Last 20 lines from daemon log file - daemon-16471.out.log -----
-2026-09-22T16:44:45.836+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
-2026-09-22T16:44:45.839+0530 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
-2026-09-22T16:44:45.839+0530 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
-2026-09-22T16:44:45.839+0530 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
-2026-09-22T16:44:45.839+0530 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building Build{id=6a552b93-f1db-4f69-9f61-e1f83d6e6549, currentDir=/home/kiaq-lap-130/Mobile_App/android}. Dispatching build started information...
-2026-09-22T16:44:45.840+0530 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 189: dispatching org.gradle.launcher.daemon.protocol.BuildStarted@e1b5ecc
-2026-09-22T16:44:45.841+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: [PATH, XAUTHORITY, XMODIFIERS, XDG_DATA_DIRS, GDMSESSION, DBUS_SESSION_BUS_ADDRESS, ANDROID_HOME, XDG_CURRENT_DESKTOP, GSM_SKIP_SSH_AGENT_WORKAROUND, COLORTERM, USERNAME, SESSION_MANAGER, LOGNAME, PWD, IM_CONFIG_PHASE, SHELL, LESSOPEN, DASH__TOOL, CLUTTER_DISABLE_MIPMAPPED_TEXT, OLDPWD, GNOME_DESKTOP_SESSION_ID, GNOME_TERMINAL_SCREEN, GTK_MODULES, DEBUGINFOD_URLS, SYSTEMD_EXEC_PID, LS_COLORS, XDG_SESSION_DESKTOP, GNOME_SETUP_DISPLAY, SHLVL, DASH__SUPPRESS_ANALYTICS, MEMORY_PRESSURE_WRITE, LESSCLOSE, QT_IM_MODULE, JAVA_HOME, MEMORY_PRESSURE_WATCH, FLUTTER_ROOT, TERM, XDG_CONFIG_DIRS, GNOME_TERMINAL_SERVICE, LANG, XDG_SESSION_TYPE, DISPLAY, WAYLAND_DISPLAY, XDG_SESSION_CLASS, DESKTOP_SESSION, USER, XDG_MENU_PREFIX, QT_ACCESSIBILITY, VTE_VERSION, SSH_AUTH_SOCK, FLUTTER_ALREADY_LOCKED, GNOME_SHELL_SESSION_MODE, XDG_RUNTIME_DIR, HOME]
-2026-09-22T16:44:45.842+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
-2026-09-22T16:44:45.844+0530 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 16471). The daemon log file: /home/kiaq-lap-130/.gradle/daemon/9.3.1/daemon-16471.out.log
-2026-09-22T16:44:45.845+0530 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting 3rd build in daemon [uptime: 21 mins 8.633 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 8 GiB, non-heap usage: 5% of 4 GiB]
-2026-09-22T16:44:45.846+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
-2026-09-22T16:44:45.846+0530 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=b25f1c07-91eb-4eaf-a133-b8d83648de42,javaHome=/snap/android-studio/244/jbr,javaVersion=25,javaVendor=JetBrains s.r.o.,daemonRegistryDir=/home/kiaq-lap-130/.gradle/daemon,pid=16471,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=4G,-XX:ReservedCodeCacheSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx8G,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
-WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): camera_android_camerax
-Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
-
-Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
-If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
-an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
-
-If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors----- End of the daemon log -----
-
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Error: unable to find directory entry in pubspec.yaml: /home/kiaq-lap-130/Mobile_App/assets/icons/
+Expected to find fonts for (packages/cupertino_icons/CupertinoIcons, MaterialIcons), but found (MaterialIcons). This usually means you are referring to font families in an IconData class but not including them in the assets section of your pubspec.yaml, are missing the package that would include them, or are missing "uses-material-design: true".
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 22304 bytes (98.6% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+Execution failed for task ':jni:configureCMakeRelWithDebInfo[arm64-v8a]'.
+> [CXX1300] CMake '3.22.1' was not found in SDK, PATH, or by cmake.dir property.
 
 * Try:
 > Run with --stacktrace option to get the stack trace.
 > Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 > Get more help at https://help.gradle.org.
-Running Gradle task 'assembleRelease'...                           36.1s
+
+BUILD FAILED in 2m 6s
+Running Gradle task 'assembleRelease'...                          127.4s
 Gradle task assembleRelease failed with exit code 1
+
